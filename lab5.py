@@ -14,26 +14,33 @@ def filter_zeros(data):
 
 def RawMoment(xs, k):
     return sum(x**k for x in xs) / len(xs)
+
 def find_middle(lst):
     length = len(lst)  # Get the length of the list
     middle_index = length // 2
     return lst[middle_index]
+
 def CentralMoment(xs, k):
     mean = RawMoment(xs, 1)
     return sum((x - mean)**k for x in xs) / len(xs)
+
 def StandardizedMoment(xs, k):
     var = CentralMoment(xs, 2)
     std = math.sqrt(var)
     return CentralMoment(xs, k) / std**k
+
 def Skewness(xs):
     return StandardizedMoment(xs, 3)
+
 def ecdf(a):
     x, counts = np.unique(a, return_counts=True)
     cusum = np.cumsum(counts)
-    return x, cusum / cusum[-1]     
+    return x, cusum / cusum[-1]  
+   
 def Median(xs):
     cdf = ecdf(xs)
     return find_middle(cdf[0])
+
 def PearsonMedianSkewness(xs):
     median = Median(xs)
     mean = RawMoment(xs, 1)
@@ -55,11 +62,20 @@ kde2=stats.gaussian_kde(dataArray2)
 y2 = kde2.pdf(eval_points)
 plt.plot(eval_points, y1)
 plt.plot(eval_points, y2)
+plt.title(title)
 plt.grid(True)
-# plt.show()
+plt.show()
 
-print('For original', title)
+print('For original', title, 'data')
+print('Raw Moment:', RawMoment(dataArray1, 1))
+print('Central Moment:', CentralMoment(dataArray1, 2))
+print('Median:', Median(dataArray1))
+print('Skewness:', Skewness(dataArray1))
 print('Pearson Median Skewness:', PearsonMedianSkewness(dataArray1))
-
-print('For modelled', title)
+print('\n')
+print('For modelled', title, 'data')
+print('Raw Moment:', RawMoment(dataArray2, 1))
+print('Central Moment:', CentralMoment(dataArray2, 2))
+print('Median:', Median(dataArray2))
+print('Skewness:', Skewness(dataArray2))
 print('Pearson Median Skewness:', PearsonMedianSkewness(dataArray2))
