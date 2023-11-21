@@ -2,7 +2,7 @@ import openpyxl as opl
 from statistics import mean
 import matplotlib.pyplot as plt
 
-wb = opl.load_workbook('./../PV2013June.xlsx')
+wb = opl.load_workbook('./PV2013June.xlsx')
 birth_date = '07'
 ws = wb[birth_date + '-06-2013']
 # row_names = [ws.cell(row=3, column=i).value for i in range(2, ws.max_column + 1)]

@@ -4,7 +4,7 @@ import numpy as np
 from scipy import stats
 import math
 
-ws = opl.load_workbook('./../PV2013June.xlsx')['07-06-2013']
+ws = opl.load_workbook('./PV2013June.xlsx')['07-06-2013']
 
 def read_column(ws, col):
   return [ws.cell(row=i, column=col).value for i in range(5, ws.max_row + 1)]
