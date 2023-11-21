@@ -49,9 +49,9 @@ def PearsonMedianSkewness(xs):
     gp = 3 * (mean - median) / std
     return gp
 
-dataArray1, title = filter_zeros(read_column(ws, 6)), 'temperature'
-# dataArray1, title = filter_zeros(read_column(ws, 9)), 'frequency'
-# dataArray1, title = filter_zeros(read_column(ws, 16)), 'generated power'
+dataArray1, title = filter_zeros(read_column(ws, 6)), 'Temperature'
+# dataArray1, title = filter_zeros(read_column(ws, 9)), 'Frequency'
+# dataArray1, title = filter_zeros(read_column(ws, 16)), 'Generated Power'
 
 mu, sigma = np.mean(dataArray1), np.std(dataArray1) # mean and standard deviation
 dataArray2 = np.random.normal(mu, sigma, len(dataArray1))
