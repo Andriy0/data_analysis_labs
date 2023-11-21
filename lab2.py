@@ -2,7 +2,7 @@ import openpyxl as opl
 import matplotlib.pyplot as plt
 import numpy as np
 
-wb = opl.load_workbook('./../PV2013June.xlsx')
+wb = opl.load_workbook('./PV2013June.xlsx')
 birth_date = '07'
 ws = wb[birth_date + '-06-2013']
 
