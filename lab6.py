@@ -11,6 +11,18 @@ dataArray1, title1 = read_column(ws, 6), 'Temperature'
 # dataArray1, title1 = read_column(ws, 9), 'Frequency'
 # dataArray1, title1 = read_column(ws, 16), 'Generated Power'
 
+mu, sigma = np.mean(dataArray1), np.std(dataArray1) # mean and standard deviation
+dataArray2 = np.random.normal(mu, sigma, len(dataArray1))
+
+print('Between original and modelled', title1)
+print('Correlation:')
+print(np.corrcoef(dataArray1, dataArray2))
+print('Covariance:')
+print(np.cov(dataArray1, dataArray2))
+print('Pearson Correlation:')
+print(stats.pearsonr(dataArray1, dataArray2))
+print('\n')
+
 # dataArray2, title2 = read_column(ws, 6), 'Temperature'
 dataArray2, title2 = read_column(ws, 9), 'Frequency'
 # dataArray2, title2 = read_column(ws, 16), 'Generated Power'
