@@ -15,6 +15,5 @@ data = [[read_column(ws, 6), 'Temperature'],
         [read_column(ws, 9), 'Frequency'],
         [read_column(ws, 16), 'Generated Power']]
 
-print_stats(data[0][0], data[1][0], data[0][1], data[1][1])
-print_stats(data[1][0], data[2][0], data[1][1], data[2][1])
-print_stats(data[2][0], data[0][0], data[2][1], data[0][1])
+for i in range(3):
+  print_stats(data[i-1][0], data[i][0], data[i-1][1], data[i][1])
